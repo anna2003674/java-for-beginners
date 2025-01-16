@@ -1,4 +1,4 @@
-package org.example.data_types;
+package org.example.datatypes;
 
 public class App {
     public static void main(String[] args) {
