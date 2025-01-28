@@ -1,0 +1,43 @@
+Перевозка сокровищ
+Вы нашли пещеру с сокровищами, в которой находятся множество ценных предметов, и
+хотите унести как можно больше из этой пещеры. К сожалению, общий вес, который вы
+можете перенести, ограничен, поэтому вам нужно сделать выбор. Даны два массива: weights
+и values. Элемент weights[i] обозначает вес i-го предмета, а элемент values[i] — его
+стоимость. Также дана емкость рюкзака (переменная capacity). Нужно найти максимальную
+стоимость набора предметов, которые могут быть выбраны, если суммарный вес этих
+предметов не превышает заданную емкость.
+Пример: Рассмотрим следующий массив весов (weights):
+[5, 10, 15, 20, 25]
+И следующий массив стоимостей (values):
+[10, 30, 45, 50, 70]
+Допустим, емкость рюкзака (capacity) равна 60. В этом случае оптимальный выбор
+предметов даст стоимость 165. Для этого нужно выбрать предметы с индексами 2, 3 и 4.
+Кроме того, дано следующее рекурсивное описание задачи на языке Java:
+public static int max(int x, int y) {
+ if (x > y)
+ return x;
+ return y;
+ }
+public static int treasure(int[] weights, int[] values, int capacity, int
+startIndex) {
+ if (startIndex >= weights.length) return 0;
+ if (capacity < weights[startIndex]) return treasure(weights, values,
+capacity, startIndex + 1);
+ return max(treasure(weights, values, capacity - weights[startIndex],
+startIndex + 1) + values[startIndex], treasure(weights, values, capacity,
+startIndex));
+ }
+Вы заметите, что это рекурсивное решение недостаточно эффективно для решения задачи
+для больших входных данных. Следующая функция на языке Java генерирует случайные
+массивы:
+public static int[] createRandomVector(int length, int seed) {
+ java.util.Random rand = new java.util.Random(seed);
+ int[] result = new int[length];
+ for (int i = 0; i < length; ++i)
+ result[i] = rand.nextInt(100);
+ return result;
+ }
+Используйте технику мемоизации (из главы "Динамическое программирование"), чтобы
+решить задачу для следующих значений: weights = createRandomVector(1000,1), values =
+createRandomVector(1000,2) и емкости capacity = 100. Выведите результат работы
+программы.
