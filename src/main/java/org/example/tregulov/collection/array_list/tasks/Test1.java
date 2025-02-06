@@ -1,4 +1,4 @@
-package org.example.tregulov.collection.array_list.tsaks;
+package org.example.tregulov.collection.array_list.tasks;
 
 import java.util.ArrayList;
 
