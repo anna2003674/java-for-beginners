@@ -12,7 +12,7 @@ public class ScannerEx2 {
         Set<String> set = new TreeSet<>();
         try {
             scanner = new Scanner(new FileReader("C:\\Users\\AnnaTeremizova\\Desktop\\test.txt"));
-            scanner.useDelimiter("\\w");
+            scanner.useDelimiter("\\W");
             while (scanner.hasNext()) {
                 String word = scanner.next();
                 set.add(word);
